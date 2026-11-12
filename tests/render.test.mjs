@@ -1,7 +1,7 @@
 // Run: node --test tests/
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { parse, layout } from '../hooks/register.js'
+import { parse, layout } from '../plugin/hooks/register.js'
 
 // The visible text of each row; code rows as [code <lang>]
 const rows = (md, width = 60) =>

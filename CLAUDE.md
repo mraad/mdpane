@@ -6,11 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `mdpane` is a Claude Code mod (plugin). It adds the `/mdpane [file.md]` command, which opens a pane that renders a Markdown file with color and formatting and re-reads it every second while "follow" is on. Pane keys: `r` reload, `m` styled/native toggle, `f` follow on/off, Esc close.
 
-No build step, no dependencies, no Git repo. The mod is three files, plus parser tests:
+No build step, no dependencies. The installed plugin is only the `plugin/` folder; the repo root holds the marketplace, docs and tests, which installs do not copy:
 
-- `.claude-plugin/plugin.json`: plugin manifest (name, version).
-- `hooks/hooks.json`: lists the hooks module (`./register.js`).
-- `hooks/register.js`: all logic. It exports `register(on)`, and `parse`/`layout` for the tests.
+- `.claude-plugin/marketplace.json`: marketplace with one entry, `"source": "./plugin"`.
+- `plugin/.claude-plugin/plugin.json`: plugin manifest (name, version); `icon.png` beside it.
+- `plugin/hooks/hooks.json`: lists the hooks module (`./register.js`).
+- `plugin/hooks/register.js`: all logic. It exports `register(on)`, and `parse`/`layout` for the tests.
+- `plugin/LICENSE`: a copy of the root `LICENSE`, so installed copies carry it. Keep both the same.
 - `tests/render.test.mjs`: `node:test` cases for the renderer. `tests/load.test.mjs`: drives `register(on)` with a fake `$` to test file switching. Node 22+ loads the ESM file without a `package.json`.
 
 For the mods API (`$.ui`, `$.fs`, `$.store`, `$.clock`, `$.command`, hook events, UI elements), load the `plugin-authoring` skill rather than guessing.
@@ -18,7 +20,7 @@ For the mods API (`$.ui`, `$.fs`, `$.store`, `$.clock`, `$.command`, hook events
 ## Check
 
 ```sh
-node --check hooks/register.js            # syntax only
+node --check plugin/hooks/register.js           # syntax only
 node --test tests/                        # all tests
 node --test --test-name-pattern=setext tests/   # one test
 ```

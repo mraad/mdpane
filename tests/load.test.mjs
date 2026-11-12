@@ -1,7 +1,7 @@
 // Switching files while a timed read is in flight must show the new file.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { register } from '../hooks/register.js'
+import { register } from '../plugin/hooks/register.js'
 
 test('a read that finishes after /mdpane switched files is dropped', async () => {
   const h = {}

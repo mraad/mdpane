@@ -2,5 +2,5 @@
   "name": "mdpane",
   "description": "mdpane: a Claude Code mod that renders a Markdown file in a pane with color and formatting, and reloads it when the file changes",
   "owner": { "name": "Thunderhead" },
-  "plugins": [{ "name": "mdpane", "source": "./" }]
+  "plugins": [{ "name": "mdpane", "source": "./plugin" }]
 }
