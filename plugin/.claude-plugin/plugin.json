@@ -1,6 +1,6 @@
 {
   "name": "mdpane",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Renders a Markdown file in a pane with color and text formatting, and reloads it when the file changes",
   "author": { "name": "Thunderhead" }
 }
