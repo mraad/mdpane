@@ -1,0 +1,5 @@
+{
+  "name": "mdpane",
+  "owner": { "name": "Thunderhead" },
+  "plugins": [{ "name": "mdpane", "source": "./" }]
+}
